@@ -2,6 +2,9 @@ package com.mmall.dao;
 
 import com.mmall.pojo.Cart;
 
+/**
+ * @author julin
+ */
 public interface CartMapper {
     int deleteByPrimaryKey(Integer id);
 
