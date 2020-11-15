@@ -2,6 +2,9 @@ package com.mmall.dao;
 
 import com.mmall.pojo.Order;
 
+/**
+ * @author julin
+ */
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);
 

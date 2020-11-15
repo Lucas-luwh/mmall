@@ -2,6 +2,9 @@ package com.mmall.dao;
 
 import com.mmall.pojo.Category;
 
+/**
+ * @author julin
+ */
 public interface CategoryMapper {
     int deleteByPrimaryKey(Integer id);
 

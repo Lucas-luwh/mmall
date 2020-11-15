@@ -2,6 +2,9 @@ package com.mmall.dao;
 
 import com.mmall.pojo.Product;
 
+/**
+ * @author julin
+ */
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);
 

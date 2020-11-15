@@ -2,6 +2,9 @@ package com.mmall.dao;
 
 import com.mmall.pojo.User;
 
+/**
+ * @author julin
+ */
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
