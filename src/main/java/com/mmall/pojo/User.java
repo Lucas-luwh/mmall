@@ -2,6 +2,9 @@ package com.mmall.pojo;
 
 import java.util.Date;
 
+/**
+ * @author julin
+ */
 public class User {
     private Integer id;
 
