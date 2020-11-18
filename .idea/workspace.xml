@@ -22,16 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcbe4c76-8fa3-439b-a310-f7a01c054109" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/mmall.iml" afterDir="false" />
+    <list default="true" id="dcbe4c76-8fa3-439b-a310-f7a01c054109" name="Default Changelist" comment="增加用户模块方法">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mmall/controller/portal/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mmall/controller/portal/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mmall/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mmall/dao/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mmall/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mmall/service/IUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mmall/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mmall/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +76,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -285,8 +282,16 @@
       <updated>1605184225354</updated>
       <workItem from="1605184230217" duration="6825000" />
       <workItem from="1605491105246" duration="3682000" />
-      <workItem from="1605678401123" duration="2165000" />
+      <workItem from="1605678401123" duration="5159000" />
     </task>
+    <task id="LOCAL-00001" summary="增加用户模块方法">
+      <created>1605680692749</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605680692749</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +309,15 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加用户模块方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加用户模块方法" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="623" y="47" key="#com.intellij.ide.util.MemberChooser" timestamp="1605684188429">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="623" y="47" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1605684188429" />
     <state x="127" y="153" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1605185053651">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -345,6 +358,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605189271724" />
+    <state x="387" y="93" key="Vcs.Push.Dialog.v2" timestamp="1605680699182">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="387" y="93" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1605680699182" />
     <state x="841" y="218" key="git4idea.merge.GitPullDialog" timestamp="1605186635879">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
