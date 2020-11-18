@@ -58,7 +58,13 @@
       where password = #{password}
       and id = #{userId}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <select id="checkEmailByUserId" resultType="java.lang.Integer" parameterType="map">
+    select count(*)
+    from mmall_user
+    where email = #{email}
+    and id = # {id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from mmall_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
