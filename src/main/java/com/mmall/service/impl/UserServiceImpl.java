@@ -10,7 +10,6 @@ import com.mmall.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import java.util.UUID;
 
@@ -42,8 +41,9 @@ public class UserServiceImpl implements IUserService {
 		//md5密码登录
 		String md5Password = MD5Util.MD5EncodeUtf8(password);
 		User user = userMapper.selectLogin(userName, md5Password);
-		Assert.isNull(user, ServerResponse.createByErrorMessage("密码错误").getMsg());
-
+		if (user == null){
+			return ServerResponse.createByErrorMessage("密码错误");
+		}
 		user.setPassword(StringUtils.EMPTY);
 		return ServerResponse.createBySuccess("登录成功",user);
 	}
