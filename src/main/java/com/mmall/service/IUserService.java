@@ -85,7 +85,7 @@ public interface IUserService {
 	/**
 	 * 检查用户是否为管理员
 	 * @param user 用户
-	 * @return
+	 * @return 响应信息
 	 */
-	ServerResponse checkAdminRole(User user);
+	ServerResponse<String> checkAdminRole(User user);
 }

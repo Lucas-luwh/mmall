@@ -200,7 +200,7 @@ public class UserServiceImpl implements IUserService {
 	 * @return 响应信息
 	 */
 	@Override
-	public ServerResponse checkAdminRole(User user){
+	public ServerResponse<String> checkAdminRole(User user){
 		if(user != null && user.getRole() == Const.Role.ROLE_ADMIN){
 			return ServerResponse.createBySuccess();
 		}
