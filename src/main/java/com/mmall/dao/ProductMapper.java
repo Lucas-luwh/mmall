@@ -2,6 +2,8 @@ package com.mmall.dao;
 
 import com.mmall.pojo.Product;
 
+import java.util.List;
+
 /**
  * @author julin
  */
@@ -37,4 +39,10 @@ public interface ProductMapper {
      * @return 数目
      */
     int updateByPrimaryKey(Product record);
+
+    /**
+     * 查询所有产品
+     * @return 集合
+     */
+    List<Product> selectList();
 }
