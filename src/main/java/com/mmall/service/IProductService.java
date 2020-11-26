@@ -1,8 +1,10 @@
 package com.mmall.service;
 
+import com.github.pagehelper.PageInfo;
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.Product;
 import com.mmall.vo.ProductDetailVo;
+import com.mmall.vo.ProductListVo;
 
 /**
  * @package: com.mmall.service
@@ -34,4 +36,12 @@ public interface IProductService {
 	 * @return 封装的实体
 	 */
 	ServerResponse<ProductDetailVo>  manageProductDetail(Integer productId);
+
+	/**
+	 * 查询所有产品
+	 * @param pageNum 页数
+	 * @param pageSize 一页数量
+	 * @return 分页展示信息
+	 */
+	ServerResponse<PageInfo<ProductListVo>> getProductList(int pageNum, int pageSize);
 }
