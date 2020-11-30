@@ -18,6 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -128,11 +129,12 @@ public class ProductServiceImpl implements IProductService {
 
 		List<Product> productList = productMapper.selectList();
 		List<ProductListVo> productListVos = Lists.newArrayList();
-		for (Product productItem : productList){
+		for (Product productItem : productList) {
 			ProductListVo productListVo = assembleProductListVo(productItem);
 			productListVos.add(productListVo);
 		}
 		PageInfo<ProductListVo> pageInfo = new PageInfo<>(productListVos);
+		pageInfo.setList(productListVos);
 		return ServerResponse.createBySuccess(pageInfo);
 	}
 
@@ -148,4 +150,22 @@ public class ProductServiceImpl implements IProductService {
 		productListVo.setStatus(product.getStatus());
 		return productListVo;
 	}
+
+	@Override
+	public ServerResponse<PageInfo<ProductListVo>> searchProduct(String productName, Integer productId, int pageNum, int pageSize){
+		PageHelper.startPage(pageNum,pageSize);
+		if (StringUtils.isNotBlank(productName)){
+			productName = "%" + productName + "%";
+		}
+		List<Product> productList = productMapper.selectByNameAndProductId(productName, productId);
+		ArrayList<ProductListVo> list = Lists.newArrayList();
+		for (Product productItem:productList) {
+			ProductListVo productListVo = assembleProductListVo(productItem);
+			list.add(productListVo);
+		}
+		PageInfo<ProductListVo> pageInfo = new PageInfo<>(list);
+		pageInfo.setList(list);
+		return ServerResponse.createBySuccess(pageInfo);
+	}
+
 }

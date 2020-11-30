@@ -44,4 +44,14 @@ public interface IProductService {
 	 * @return 分页展示信息
 	 */
 	ServerResponse<PageInfo<ProductListVo>> getProductList(int pageNum, int pageSize);
+
+	/**
+	 * 通过产品名称和id搜索产品
+	 * @param productName 产品名称
+	 * @param productId 产品id
+	 * @param pageNum 第几页
+	 * @param pageSize 一页展示的数量
+	 * @return 产品vo
+	 */
+	ServerResponse<PageInfo<ProductListVo>> searchProduct(String productName,Integer productId,int pageNum,int pageSize);
 }

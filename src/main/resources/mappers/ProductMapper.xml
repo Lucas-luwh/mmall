@@ -33,7 +33,20 @@
     from mmall_product
     ORDER BY id asc
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByNameAndProductId" resultType="com.mmall.pojo.Product">
+      select
+      <include refid="Base_Column_List"/>
+      from mmall_product
+      <where>
+        <if test="productName != null">
+          and name like #{productName}
+        </if>
+        <if test="productId">
+          and id = #{productId}
+        </if>
+      </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from mmall_product
     where id = #{id,jdbcType=INTEGER}
   </delete>
