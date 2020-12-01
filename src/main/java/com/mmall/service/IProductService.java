@@ -54,4 +54,22 @@ public interface IProductService {
 	 * @return 产品vo
 	 */
 	ServerResponse<PageInfo<ProductListVo>> searchProduct(String productName,Integer productId,int pageNum,int pageSize);
+
+	/**
+	 * 获得产品详情
+	 * @param productId 产品id
+	 * @return 产品vo
+	 */
+	ServerResponse<ProductDetailVo> getProductDetail(Integer productId);
+
+	/**
+	 * 通过关键字和品种id搜索产品
+	 * @param keyWord 关键字
+	 * @param categoryId 品种id'
+	 * @param pageNum 第几页
+	 * @param pageSize 一页展示的数量
+	 * @param orderBy 排序规则
+	 * @return ProductListVo
+	 */
+	ServerResponse<PageInfo<ProductListVo>> getProductByKeywordCategory(String keyWord,Integer categoryId,int pageNum,int pageSize,String orderBy);
 }

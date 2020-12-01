@@ -19,6 +19,11 @@ public interface CategoryMapper {
 
     int insertSelective(Category record);
 
+    /**
+     * 通过id查看分类信息
+     * @param id 分类id
+     * @return 品种信息
+     */
     Category selectByPrimaryKey(Integer id);
 
     /**
