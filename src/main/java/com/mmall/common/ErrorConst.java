@@ -12,4 +12,6 @@ public class ErrorConst {
 	public static final String NEED_LOGIN_MESSAGE = "未登录，需先进行登录";
 
 	public static final String NEED_ADMIN_LOGIN = "不是管理员，无权限进行操作";
+
+	public static final String NEED_AUTHORITY = "无权限进行操作";
 }

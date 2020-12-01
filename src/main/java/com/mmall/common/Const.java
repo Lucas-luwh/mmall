@@ -17,6 +17,8 @@ public class Const {
 	public static final String EMAIL ="email";
 
 	public static final String USERNAME = "userName";
+
+	public static final String SUCCESS = "success";
 	/**
 	 * 设置用户权限
 	 */
