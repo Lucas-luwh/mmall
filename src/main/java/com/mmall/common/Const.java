@@ -1,5 +1,10 @@
 package com.mmall.common;
 
+import com.google.common.collect.Sets;
+import lombok.Getter;
+
+import java.util.Set;
+
 /**
  * @package: com.mmall.common
  * @author: luweihong
@@ -29,4 +34,31 @@ public class Const {
 		int ROLE_ADMIN = 1;
 	}
 
+	public interface ProductListOrderBy{
+		//用contain方法复杂度为o(1)
+		Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc","price_asc");
+	}
+
+	/**
+	 * 产品状态信息
+	 */
+	@Getter
+	public enum ProductStatusEnum{
+		/**
+		 * 状态
+		 */
+		ON_SALE(1,"在线");
+		/**
+		 * 值
+		 */
+		private String value;
+		/**
+		 * 响应码
+		 */
+		private int code;
+		ProductStatusEnum(int code,String value){
+			this.code = code;
+			this.value = value;
+		}
+	}
 }
