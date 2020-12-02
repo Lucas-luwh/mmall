@@ -1,9 +1,6 @@
 package com.mmall.common;
 
-import com.google.common.collect.Sets;
 import lombok.Getter;
-
-import java.util.Set;
 
 /**
  * @package: com.mmall.common
@@ -28,15 +25,12 @@ public class Const {
 	 * 设置用户权限
 	 */
 	public interface Role{
-		//普通用户
-		int ROLE_CUSTOMER = 0;
-		//管理员
-		int ROLE_ADMIN = 1;
 	}
 
 	public interface ProductListOrderBy{
-		//用contain方法复杂度为o(1)
-		Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc","price_asc");
+	}
+
+	public interface Cart{
 	}
 
 	/**

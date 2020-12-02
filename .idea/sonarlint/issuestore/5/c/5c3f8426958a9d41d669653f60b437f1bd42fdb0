@@ -1,0 +1,29 @@
+
+l
+java:S4488L"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(€ÏÅ…üÿÿÿÿ8°–Ú…Ş.
+m
+java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(¢Ê»¿úÿÿÿÿ8°–Ú…Ş.
+\
+java:S2441*":Make "User" serializable or don't store it in the session.( Ù®«şÿÿÿÿ8°–Ú…Ş.
+g
+java:S4488;"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(´ÛıÁ8°–Ú…Ş.
+j	java:S100r"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õğ¾8°–Ú…Ş.
+g
+java:S4488A"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(™ŸÜ™8°–Ú…Ş.
+j	java:S100ƒ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿¬à}8°–Ú…Ş.
+g
+java:S4488%"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(õâÕİ8§ÜàÖÜ.
+l
+java:S4488T"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ƒ¯İ“ıÿÿÿÿ8°–Ú…Ş.
+l
+java:S4488f"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ª·­øÿÿÿÿ8°–Ú…Ş.
+\
+java:S2441|":Make "User" serializable or don't store it in the session.( Ù®«şÿÿÿÿ8°–Ú…Ş.
+g
+java:S44884"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ú©ğÍ8°–Ú…Ş.
+l
+java:S4488Z"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(±˜Öƒùÿÿÿÿ8°–Ú…Ş.
+l
+java:S4488p"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ï™õ¥ûÿÿÿÿ8°–Ú…Ş.
+l
+java:S4488`"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ãÿÖÄøÿÿÿÿ8°–Ú…Ş.
