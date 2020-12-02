@@ -1,6 +1,7 @@
 package com.mmall.service.impl;
 
 import com.mmall.common.Const;
+import com.mmall.common.RoleImpl;
 import com.mmall.common.ServerResponse;
 import com.mmall.common.TokenCache;
 import com.mmall.dao.UserMapper;
@@ -64,7 +65,7 @@ public class UserServiceImpl implements IUserService {
 			return valid;
 		}
 		//设置权限为普通用户
-		user.setRole(Const.Role.ROLE_CUSTOMER);
+		user.setRole(RoleImpl.ROLE_CUSTOMER);
 		//md5加密
 		user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
 		int resultCount = userMapper.insert(user);
@@ -201,7 +202,7 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public ServerResponse<String> checkAdminRole(User user){
-		if(user != null && user.getRole() == Const.Role.ROLE_ADMIN){
+		if(user != null && user.getRole() == RoleImpl.ROLE_ADMIN){
 			return ServerResponse.createBySuccess();
 		}
 		return ServerResponse.createByError();

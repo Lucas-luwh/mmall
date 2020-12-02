@@ -3,10 +3,7 @@ package com.mmall.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
-import com.mmall.common.Const;
-import com.mmall.common.Dict;
-import com.mmall.common.ResponseCode;
-import com.mmall.common.ServerResponse;
+import com.mmall.common.*;
 import com.mmall.dao.CategoryMapper;
 import com.mmall.dao.ProductMapper;
 import com.mmall.pojo.Category;
@@ -206,7 +203,7 @@ public class ProductServiceImpl implements IProductService {
 			keyWord = "%"+keyWord+"%";
 		}
 		PageHelper.startPage(pageNum,pageSize);
-		if (StringUtils.isNotBlank(orderBy) && Const.ProductListOrderBy.PRICE_ASC_DESC.contains(orderBy)){
+		if (StringUtils.isNotBlank(orderBy) && ProductListOrderByImpl.PRICE_ASC_DESC.contains(orderBy)){
 			String[] array = orderBy.split(",");
 			PageHelper.orderBy(array[0]+" "+array[1]);
 		}
