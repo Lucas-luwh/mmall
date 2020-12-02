@@ -1,6 +1,7 @@
 package com.mmall.controller.backend;
 
 import com.mmall.common.Const;
+import com.mmall.common.RoleImpl;
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
@@ -32,7 +33,7 @@ public class UserManageController {
 		ServerResponse<User> response = iUserService.login(userName, password);
 		if (response.isSuccess()){
 			User user = response.getData();
-			if (user.getRole() == Const.Role.ROLE_ADMIN){
+			if (user.getRole() == RoleImpl.ROLE_ADMIN){
 				session.setAttribute(Const.CURRENT_USER,user);
 				return response;
 			}else {
