@@ -16,5 +16,5 @@ public class ProductListOrderByImpl implements Const.ProductListOrderBy {
 	/**
 	 * 用set contain方法复杂度为o(1)
 	 */
-	protected static final Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc","price_asc");
+	public static final Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc", "price_asc");
 }
