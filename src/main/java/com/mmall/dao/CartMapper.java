@@ -29,6 +29,11 @@ public interface CartMapper {
      */
     int updateByPrimaryKeySelective(Cart record);
 
+    /**
+     * 更新购物车
+     * @param record 购物车
+     * @return 数量
+     */
     int updateByPrimaryKey(Cart record);
 
     /**
@@ -52,4 +57,12 @@ public interface CartMapper {
      * @return 数目
      */
     int selectCartProductCheckedStatusByUserId(Integer userId);
+
+    /**
+     * 删除购物车中的产品
+     * @param userId 用户id
+     * @param productIdList 产品id集合
+     * @return 删除数量
+     */
+    int deleteByUserIdProductIds(@Param("userId") Integer userId,@Param("productIdList")List<String> productIdList);
 }
