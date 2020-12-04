@@ -20,4 +20,21 @@ public interface ICartService {
 	 * @return 产品vo
 	 */
 	ServerResponse<CartVo> add(Integer userId, Integer productId, Integer count);
+
+	/**
+	 * 更新购物车
+	 * @param userId 用户id
+	 * @param productId 产品id
+	 * @param count 数量
+	 * @return CartVo
+	 */
+	ServerResponse<CartVo> update(Integer userId,Integer productId,Integer count);
+
+	/**
+	 * 删除购物车中的产品
+	 * @param userId 用户id
+	 * @param productIds 产品id
+	 * @return CartVo
+	 */
+	ServerResponse<CartVo> deleteProduct(Integer userId, String productIds);
 }
