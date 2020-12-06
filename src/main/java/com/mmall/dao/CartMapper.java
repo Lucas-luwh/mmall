@@ -65,4 +65,15 @@ public interface CartMapper {
      * @return 删除数量
      */
     int deleteByUserIdProductIds(@Param("userId") Integer userId,@Param("productIdList")List<String> productIdList);
+
+    /**
+     * 检查产品的状态
+     * @param userId 用户id
+     * @param productId 产品id
+     * @param checked 选择状态
+     * @return 更新条数
+     */
+    int checkedOrUncheckedProduct(@Param("userId") Integer userId,@Param("productId")Integer productId,@Param("checked") Integer checked);
+
+    int selectCartProductCount(@Param("userId") Integer userId);
 }

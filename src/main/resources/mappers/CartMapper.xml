@@ -37,7 +37,10 @@
     <select id="selectCartProductCheckedStatusByUserId" resultType="java.lang.Integer" parameterType="int">
       SELECT  count(1) from mmall_cart where checked = 0 and user_id = #{userId}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <select id="selectCartProductCount" resultType="java.lang.Integer">
+    select nullif(sum(quantity),0) as count from mmall_cart where user_id = #{userId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from mmall_cart
     where id = #{id,jdbcType=INTEGER}
   </delete>
@@ -142,5 +145,14 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="checkedOrUncheckedProduct" parameterType="map">
+    update mmall_cart
+    set checked = #{checked},
+    update_time = now()
+    where user_id = #{userId}
+    <if test="productId != null">
+      and product_id = #{productId}
+    </if>
   </update>
 </mapper>

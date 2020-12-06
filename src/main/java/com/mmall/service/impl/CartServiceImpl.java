@@ -1,6 +1,5 @@
 package com.mmall.service.impl;
 
-import com.google.common.annotations.Beta;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.mmall.common.CartImpl;
@@ -61,6 +60,7 @@ public class CartServiceImpl implements ICartService {
 		return this.list(userId);
 	}
 
+	@Override
 	public ServerResponse<CartVo> list(Integer userId){
 		CartVo cartVo = this.getCartVoLimit(userId);
 		return ServerResponse.createBySuccess(cartVo);
@@ -144,7 +144,6 @@ public class CartServiceImpl implements ICartService {
 	}
 
 	@Override
-	@Beta
 	public ServerResponse<CartVo> deleteProduct(Integer userId,String productIds){
 		List<String> productList = Splitter.on(",").splitToList(productIds);
 		if(CollectionUtils.isEmpty(productList)){
@@ -152,5 +151,19 @@ public class CartServiceImpl implements ICartService {
 		}
 		cartMapper.deleteByUserIdProductIds(userId,productList);
 		return this.list(userId);
+	}
+
+	@Override
+	public ServerResponse<CartVo> selectOrUnSelect(Integer userId, Integer productId, Integer checked){
+		cartMapper.checkedOrUncheckedProduct(userId,productId,checked);
+		return this.list(userId);
+	}
+
+	@Override
+	public ServerResponse<Integer> getCartProductCount(Integer userId){
+		if(userId == null){
+			return ServerResponse.createBySuccess(0);
+		}
+		return ServerResponse.createBySuccess(cartMapper.selectCartProductCount(userId));
 	}
 }
