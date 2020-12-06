@@ -37,4 +37,27 @@ public interface ICartService {
 	 * @return CartVo
 	 */
 	ServerResponse<CartVo> deleteProduct(Integer userId, String productIds);
+
+	/**
+	 * 查看购物车列表
+	 * @param userId 用户id
+	 * @return CartVo
+	 */
+	ServerResponse<CartVo> list (Integer userId);
+
+	/**
+	 * 查看状态
+	 * @param userId 用户id
+	 * @param productId 产品id
+	 * @param checked 状态
+	 * @return CartVo
+	 */
+	ServerResponse<CartVo> selectOrUnSelect(Integer userId,Integer productId,Integer checked);
+
+	/**
+	 * 获取购物车的产品的数量
+	 * @param userId 用户id
+	 * @return 数量
+	 */
+	ServerResponse<Integer> getCartProductCount(Integer userId);
 }
