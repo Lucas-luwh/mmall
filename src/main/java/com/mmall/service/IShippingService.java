@@ -1,5 +1,6 @@
 package com.mmall.service;
 
+import com.github.pagehelper.PageInfo;
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.Shipping;
 
@@ -45,4 +46,13 @@ public interface IShippingService {
 	 * @return 地址详情
 	 */
 	ServerResponse<Shipping> select(Integer userId, Integer shippingId);
+
+	/**
+	 * 查看同个用户多个地址
+	 * @param userId 用户id
+	 * @param pageNum 页数
+	 * @param pageSize 展示数量
+	 * @return 集合
+	 */
+	ServerResponse<PageInfo<Shipping>> list(Integer userId, int pageNum, int pageSize);
 }
