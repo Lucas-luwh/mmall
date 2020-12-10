@@ -3,6 +3,8 @@ package com.mmall.dao;
 import com.mmall.pojo.Shipping;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author julin
  */
@@ -46,4 +48,11 @@ public interface ShippingMapper {
      * @return 地址详情
      */
     Shipping selectByShippingIdUserId(@Param("userId") Integer userId, @Param("shippingId") Integer shippingId);
+
+    /**
+     * 通过用户id查看地址信息
+     * @param userId 用户id
+     * @return 集合信息
+     */
+    List<Shipping> selectByUserId(Integer userId);
 }
