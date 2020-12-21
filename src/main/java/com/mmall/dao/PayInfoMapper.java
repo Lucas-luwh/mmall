@@ -8,6 +8,11 @@ import com.mmall.pojo.PayInfo;
 public interface PayInfoMapper {
     int deleteByPrimaryKey(Integer id);
 
+    /**
+     * 支付信息
+     * @param record 支付信息
+     * @return 结果
+     */
     int insert(PayInfo record);
 
     int insertSelective(PayInfo record);
