@@ -35,4 +35,12 @@ public interface IOrderService {
 	 * @return 响应信息
 	 */
 	ServerResponse<String> queryOrderPayStatus(Integer id, Long orderNo);
+
+	/**
+	 * 创建订单
+	 * @param id 用户id
+	 * @param shippingId 地址id
+	 * @return 响应信息
+	 */
+	ServerResponse<String> createOrder(Integer id, Integer shippingId);
 }

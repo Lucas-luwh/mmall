@@ -20,6 +20,11 @@ public interface ShippingMapper {
 
     int insertSelective(Shipping record);
 
+    /**
+     * 通过主键查询地址
+     * @param id 地址id
+     * @return 地址信息
+     */
     Shipping selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Shipping record);

@@ -35,4 +35,7 @@ public class OrderItem {
 
     private Date updateTime;
 
+    public OrderItem() {
+        super();
+    }
 }
