@@ -41,4 +41,7 @@ public class Order {
 
     private Date updateTime;
 
+    public Order() {
+        super();
+    }
 }

@@ -9,6 +9,11 @@ import java.util.List;
  * @author julin
  */
 public interface CartMapper {
+    /**
+     * 清空购物车
+     * @param id 购物车id
+     * @return 结果信息
+     */
     int deleteByPrimaryKey(Integer id);
 
     /**
@@ -75,5 +80,17 @@ public interface CartMapper {
      */
     int checkedOrUncheckedProduct(@Param("userId") Integer userId,@Param("productId")Integer productId,@Param("checked") Integer checked);
 
+    /**
+     * 查询当前用户的购物车数量
+     * @param userId 用户id
+     * @return 结果信息
+     */
     int selectCartProductCount(@Param("userId") Integer userId);
+
+    /**
+     * 通过用户id查询选中的的购物
+     * @param userId 用户id
+     * @return 购物车
+     */
+	List<Cart> selectCheckedCartByUserId(@Param("userId") Integer userId);
 }

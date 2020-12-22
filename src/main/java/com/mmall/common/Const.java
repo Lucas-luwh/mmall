@@ -21,6 +21,7 @@ public class Const {
 	public static final String USERNAME = "userName";
 
 	public static final String SUCCESS = "success";
+
 	/**
 	 * 设置用户权限
 	 */
@@ -101,6 +102,9 @@ public class Const {
 	}
 
 	public enum PayPlatformEnum{
+		/**
+		 * 支付工具
+		 */
 		ALIPAY(1,"支付宝");
 
 		PayPlatformEnum(int code,String value){
@@ -117,5 +121,38 @@ public class Const {
 		public int getCode() {
 			return code;
 		}
+	}
+
+	public enum PaymentTypeEnum{
+		/**
+		 * 支付方式
+		 */
+		ONLINE_PAY(1,"在线支付");
+
+		PaymentTypeEnum(int code,String value){
+			this.code = code;
+			this.value = value;
+		}
+		private String value;
+		private int code;
+
+		public String getValue() {
+			return value;
+		}
+
+		public int getCode() {
+			return code;
+		}
+
+
+		public static PaymentTypeEnum codeOf(int code){
+			for(PaymentTypeEnum paymentTypeEnum : values()){
+				if(paymentTypeEnum.getCode() == code){
+					return paymentTypeEnum;
+				}
+			}
+			throw new RuntimeException("么有找到对应的枚举");
+		}
+
 	}
 }

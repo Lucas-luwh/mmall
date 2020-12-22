@@ -93,11 +93,13 @@ public class OrderController {
 		return serverResponse.isSuccess() ? ServerResponse.createBySuccess(true) : ServerResponse.createBySuccess(false);
 	}
 
-	public ServerResponse create(HttpSession session, Integer shippingId){
+	@RequestMapping("create.do")
+	@ResponseBody
+	public ServerResponse<String> create(HttpSession session, Integer shippingId){
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if(user ==null){
 			return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
 		}
-		return null;
+		return iOrderService.createOrder(user.getId(),shippingId);
 	}
 }
