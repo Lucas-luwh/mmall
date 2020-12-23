@@ -22,6 +22,7 @@ import com.mmall.util.DateTimeUtil;
 import com.mmall.util.FTPUtil;
 import com.mmall.util.PropertiesUtil;
 import com.mmall.vo.OrderItemVo;
+import com.mmall.vo.OrderProductVo;
 import com.mmall.vo.OrderVo;
 import com.mmall.vo.ShippingVo;
 import lombok.extern.slf4j.Slf4j;
@@ -110,6 +111,50 @@ public class OrderServiceImpl implements IOrderService {
 		//返回给前端数据
 		OrderVo orderVo = assembleOrderVo(order, orderItemList);
 		return ServerResponse.createBySuccess(orderVo);
+	}
+
+	@Override
+	public ServerResponse<String> cancel(Integer id, Long orderNo) {
+		Order order = orderMapper.selectByUserIdAndOrderNo(id, orderNo);
+		if (order == null){
+			return ServerResponse.createByErrorMessage("该用户此订单不存在");
+		}
+		if (order.getStatus() != Const.OrderStatusEnum.NO_PAY.getCode()){
+			return ServerResponse.createByErrorMessage("已付款,无法取消订单");
+		}
+		Order updateOrder = new Order();
+		updateOrder.setId(id);
+		updateOrder.setStatus(Const.OrderStatusEnum.CANCELED.getCode());
+
+		int row = orderMapper.updateByPrimaryKeySelective(updateOrder);
+		if (row > 0){
+			return ServerResponse.createBySuccess();
+		}
+		return ServerResponse.createByError();
+	}
+
+	@Override
+	public ServerResponse<Object> getOrderCartProduct(Integer id) {
+		OrderProductVo orderProductVo = new OrderProductVo();
+
+		//从购物车中获取数据
+		List<Cart> cartList = cartMapper.selectCheckedCartByUserId(id);
+		ServerResponse<Object> serverResponse = this.getCartOrderItem(id, cartList);
+		if (!serverResponse.isSuccess()){
+			return serverResponse;
+		}
+		List<OrderItem> orderItemList = (List<OrderItem>) serverResponse.getData();
+		List<OrderItemVo> orderItemVoList = Lists.newArrayList();
+
+		BigDecimal payment = new BigDecimal("0");
+		for (OrderItem orderItem:orderItemList){
+			payment = BigDecimalUtil.add(payment.doubleValue(),orderItem.getTotalPrice().doubleValue());
+			orderItemVoList.add(assembleOrderItemVo(orderItem));
+		}
+		orderProductVo.setProductTotalPrice(payment);
+		orderProductVo.setOrderItemVoList(orderItemVoList);
+		orderProductVo.setImageHost(PropertiesUtil.getProperty("ftp.server.http.prefix"));
+		return ServerResponse.createBySuccess(orderProductVo);
 	}
 
 	private OrderVo assembleOrderVo(Order order, List<OrderItem> orderItemList) {

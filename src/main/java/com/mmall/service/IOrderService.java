@@ -43,4 +43,19 @@ public interface IOrderService {
 	 * @return 响应信息
 	 */
 	ServerResponse<String> createOrder(Integer id, Integer shippingId);
+
+	/**
+	 * 取消订单
+	 * @param id 用户id
+	 * @param orderNo 订单号
+	 * @return 响应信息
+	 */
+	ServerResponse<String> cancel(Integer id, Long orderNo);
+
+	/**
+	 * 获取订单中产品的内容
+	 * @param id 用户id
+	 * @return 信息
+	 */
+	ServerResponse<Object> getOrderCartProduct(Integer id);
 }
