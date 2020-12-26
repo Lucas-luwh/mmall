@@ -28,4 +28,10 @@ public interface OrderItemMapper {
      * @return 集合
      */
 	List<OrderItem> getByOrderNoUserId(@Param("orderNo") Long orderNo, @Param("userId") Integer userId);
+
+    /**
+     * 获取订单子项
+     * @param orderNo 订单号
+     */
+    List<OrderItem> getByOrderNo(@Param("orderNo") Long orderNo);
 }
