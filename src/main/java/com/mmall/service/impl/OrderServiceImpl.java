@@ -10,6 +10,8 @@ import com.alipay.demo.trade.model.result.AlipayF2FPrecreateResult;
 import com.alipay.demo.trade.service.AlipayTradeService;
 import com.alipay.demo.trade.service.impl.AlipayTradeServiceImpl;
 import com.alipay.demo.trade.utils.ZxingUtils;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mmall.common.Const;
@@ -36,6 +38,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -155,6 +158,93 @@ public class OrderServiceImpl implements IOrderService {
 		orderProductVo.setOrderItemVoList(orderItemVoList);
 		orderProductVo.setImageHost(PropertiesUtil.getProperty("ftp.server.http.prefix"));
 		return ServerResponse.createBySuccess(orderProductVo);
+	}
+
+	@Override
+	public ServerResponse<OrderVo> getOrderDetail(Integer id, Long orderNo) {
+		Order order = orderMapper.selectByUserIdAndOrderNo(id, orderNo);
+		if (order != null){
+			List<OrderItem> orderItemList = orderItemMapper.getByOrderNoUserId(orderNo, id);
+			OrderVo orderVo = assembleOrderVo(order, orderItemList);
+			return ServerResponse.createBySuccess(orderVo);
+		}
+		return ServerResponse.createByErrorMessage("没有找到该订单");
+	}
+
+	@Override
+	public ServerResponse getOrderList(Integer id, int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum,pageSize);
+		List<Order> orderList = orderMapper.selectByUserId(id);
+		List<OrderVo> orderVoList = assembleOrderVoList(orderList, id);
+		PageInfo pageResult = new PageInfo<>(orderList);
+		pageResult.setList(orderVoList);
+		return ServerResponse.createBySuccess(pageResult);
+	}
+
+	@Override
+	public ServerResponse<PageInfo> manageList(int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum,pageSize);
+		List<Order> orderList = orderMapper.selectAllOrder();
+		List<OrderVo> orderVoList = this.assembleOrderVoList(orderList,null);
+		PageInfo pageResult = new PageInfo(orderList);
+		pageResult.setList(orderVoList);
+		return ServerResponse.createBySuccess(pageResult);
+	}
+
+	@Override
+	public ServerResponse<OrderVo> manageDetail(Long orderNo) {
+		Order order = orderMapper.selectByOrderNo(orderNo);
+		if(order != null){
+			List<OrderItem> orderItemList = orderItemMapper.getByOrderNo(orderNo);
+			OrderVo orderVo = assembleOrderVo(order,orderItemList);
+			return ServerResponse.createBySuccess(orderVo);
+		}
+		return ServerResponse.createByErrorMessage("订单不存在");
+	}
+
+	@Override
+	public ServerResponse<PageInfo> manageSearch(Long orderNo, int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum,pageSize);
+		Order order = orderMapper.selectByOrderNo(orderNo);
+		if(order != null){
+			List<OrderItem> orderItemList = orderItemMapper.getByOrderNo(orderNo);
+			OrderVo orderVo = assembleOrderVo(order,orderItemList);
+
+			PageInfo pageResult = new PageInfo(Lists.newArrayList(order));
+			pageResult.setList(Lists.newArrayList(orderVo));
+			return ServerResponse.createBySuccess(pageResult);
+		}
+		return ServerResponse.createByErrorMessage("订单不存在");
+	}
+
+	@Override
+	public ServerResponse<String> manageSendGoods(Long orderNo) {
+		Order order= orderMapper.selectByOrderNo(orderNo);
+		if(order != null){
+			if(order.getStatus() == Const.OrderStatusEnum.PAID.getCode()){
+				order.setStatus(Const.OrderStatusEnum.SHIPPED.getCode());
+				order.setSendTime(new Date());
+				orderMapper.updateByPrimaryKeySelective(order);
+				return ServerResponse.createBySuccess("发货成功");
+			}
+		}
+		return ServerResponse.createByErrorMessage("订单不存在");
+	}
+
+	private List<OrderVo> assembleOrderVoList(List<Order> orderList, Integer id) {
+		List<OrderVo> orderVoList = Lists.newArrayList();
+		for (Order order:orderList){
+			List<OrderItem> orderItemList = Lists.newArrayList();
+			if (id == null){
+				//管理员不传id
+				orderItemList = orderItemMapper.getByOrderNo(order.getOrderNo());
+			}else {
+				orderItemList = orderItemMapper.getByOrderNoUserId(order.getOrderNo(),id);
+			}
+			OrderVo orderVo = assembleOrderVo(order, orderItemList);
+			orderVoList.add(orderVo);
+		}
+		return orderVoList;
 	}
 
 	private OrderVo assembleOrderVo(Order order, List<OrderItem> orderItemList) {

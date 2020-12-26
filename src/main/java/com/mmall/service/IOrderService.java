@@ -1,13 +1,15 @@
 package com.mmall.service;
 
+import com.github.pagehelper.PageInfo;
 import com.mmall.common.ServerResponse;
+import com.mmall.vo.OrderVo;
 
 import java.util.HashMap;
 
 /**
  * @package: com.mmall.service
  * @author: luweihong
- * @description:
+ * @description: 订单服务
  * @create: 2020/12/15 20:45
  * @version: 1.0
  */
@@ -58,4 +60,52 @@ public interface IOrderService {
 	 * @return 信息
 	 */
 	ServerResponse<Object> getOrderCartProduct(Integer id);
+
+	/**
+	 * 获取订单详情
+	 * @param id 用户id
+	 * @param orderNo 订单号
+	 * @return 信息
+	 */
+	ServerResponse<OrderVo> getOrderDetail(Integer id, Long orderNo);
+
+	/**
+	 * 获取全部订单信息
+	 * @param id 用户id
+	 * @param pageNum 页面
+	 * @param pageSize 页数
+	 * @return 信息
+	 */
+	ServerResponse getOrderList(Integer id, int pageNum, int pageSize);
+
+	/**
+	 * 展示订单列表
+	 * @param pageNum pageNum
+	 * @param pageSize pageSize
+	 * @return 信息
+	 */
+	ServerResponse<PageInfo> manageList(int pageNum, int pageSize);
+
+	/**
+	 * 详细订单信息
+	 * @param orderNo 订单号
+	 * @return  OrderVo
+	 */
+	ServerResponse<OrderVo> manageDetail(Long orderNo);
+
+	/**
+	 * 搜索
+	 * @param orderNo 订单号
+	 * @param pageNum pageNum
+	 * @param pageSize pageSize
+	 * @return PageInfo
+	 */
+	ServerResponse<PageInfo> manageSearch(Long orderNo, int pageNum, int pageSize);
+
+	/**
+	 * 发货信息
+	 * @param orderNo 订单号
+	 * @return 信息
+	 */
+	ServerResponse<String> manageSendGoods(Long orderNo);
 }

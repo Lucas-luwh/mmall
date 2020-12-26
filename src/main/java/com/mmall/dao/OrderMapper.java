@@ -47,4 +47,17 @@ public interface OrderMapper {
      * @param orderItemList 订单
      */
 	void batchInsert(@Param("orderItemList") List<OrderItem> orderItemList);
+
+	/**
+	 * 查询当前用户的全部订单
+	 * @param id 用户id
+	 * @return 订单信息
+	 */
+	List<Order> selectByUserId(@Param("userId") Integer id);
+
+	/**
+	 * 查询所有订单
+	 * @return 订单集合
+	 */
+	List<Order> selectAllOrder();
 }
